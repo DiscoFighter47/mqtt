@@ -1,0 +1,16 @@
+name: mqtt
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1
+      with:
+        username: discofighter47
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: discofighter47/mqtt
+        tag_with_sha: true
